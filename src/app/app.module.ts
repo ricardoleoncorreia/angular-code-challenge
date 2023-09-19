@@ -3,16 +3,23 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { TimePipe } from './pipes/time.pipe';
+import { ChronometerComponent } from './components/chronometer/chronometer.component';
+import { SummaryComponent } from './components/summary/summary.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ChronometerComponent,
+    SummaryComponent,
+    TimePipe
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
