@@ -12,8 +12,8 @@ interface TimerState {
 }
 
 export const initialTimerState: TimerState = {
-  lastTime: 10,
-  savedAt: new Date().toISOString()
+  lastTime: 0,
+  savedAt: null
 };
 
 export const timerReducer = createReducer(
