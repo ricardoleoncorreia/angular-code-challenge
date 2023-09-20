@@ -1,0 +1,7 @@
+<ng-container *ngIf="lastTime$ | async as lastTime; else invalidTime">
+  <p>{{ lastTime | time }}</p>
+  <p>Saved at {{ savedDate$ | async | date:'medium' }}</p>
+</ng-container>
+<ng-template #invalidTime>
+  <p>Not valid time was provided</p>
+</ng-template>

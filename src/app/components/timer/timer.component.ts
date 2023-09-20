@@ -1,13 +1,17 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Subject, filter, interval, takeUntil, tap } from 'rxjs';
-import { Actions as TimerActions } from 'src/app/enums/actions.enum';
+
+import { TimerActions } from '../../enums/timer-actions.enum';
+import { saveTime } from '../../store/timer.actions';
+import { AppState } from '../../store/timer.reducers';
 
 @Component({
-  selector: 'app-chronometer',
-  templateUrl: './chronometer.component.html',
-  styleUrls: ['./chronometer.component.scss']
+  selector: 'app-timer',
+  templateUrl: './timer.component.html',
+  styleUrls: ['./timer.component.scss']
 })
-export class ChronometerComponent implements OnInit, OnDestroy {
+export class TimerComponent implements OnInit, OnDestroy {
   private readonly destroy = new Subject<void>();
   private readonly buttonLabels: Record<TimerActions, string> = {
     [TimerActions.START]: 'Start',
@@ -24,6 +28,8 @@ export class ChronometerComponent implements OnInit, OnDestroy {
   currentPrimaryButtonLabel = this.buttonLabels[TimerActions.START];
   elapsedTime = 0;
   continueTimer = false;
+
+  constructor(private readonly store: Store<AppState>) {}
 
   ngOnInit(): void {
     this.timer
@@ -61,5 +67,9 @@ export class ChronometerComponent implements OnInit, OnDestroy {
     this.currentPrimaryButtonLabel = this.buttonLabels[TimerActions.START];
     this.continueTimer = false;
     this.elapsedTime = 0;
+  }
+
+  onSave(): void {
+    this.store.dispatch(saveTime({ lastTime: this.elapsedTime }));
   }
 }

@@ -1,7 +1,7 @@
-<h2 class="title">Chronometer</h2>
+<h2 class="title">Timer</h2>
 <span class="timer">{{ elapsedTime | time }}</span>
 <div class="actions">
   <button (click)="onTimerInteraction()">{{ currentPrimaryButtonLabel }}</button>
   <button (click)="onReset()">Reset</button>
-  <button>Save</button>
+  <button (click)="onSave()">Save</button>
 </div>

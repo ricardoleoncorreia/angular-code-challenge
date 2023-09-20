@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { SummaryComponent } from './components/summary/summary.component';
-import { ChronometerComponent } from './components/chronometer/chronometer.component';
+import { TimerComponent } from './components/timer/timer.component';
 
 const routes: Routes = [
-  { path: '',   redirectTo: '/counter', pathMatch: 'full' },
-  { path: 'counter', component: ChronometerComponent },
+  { path: 'timer', component: TimerComponent },
   { path: 'summary', component: SummaryComponent },
+  { path: '**',   redirectTo: '/timer', pathMatch: 'full' },
 ];
 
 @NgModule({
