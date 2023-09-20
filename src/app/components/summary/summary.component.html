@@ -1,7 +1,8 @@
 <ng-container *ngIf="lastTime$ | async as lastTime; else invalidTime">
-  <p>{{ lastTime | time }}</p>
-  <p>Saved at {{ savedDate$ | async | date:'medium' }}</p>
+  <p class="timer">{{ lastTime | time }}</p>
+  <p class="text">Saved at {{ savedDate$ | async | date:'medium' }}</p>
 </ng-container>
 <ng-template #invalidTime>
-  <p>Not valid time was provided</p>
+  <p class="text">Not valid time was provided</p>
 </ng-template>
+<button class="btn btn-secondary" (click)="goBackToTimerPage()">Back to timer</button>

@@ -70,6 +70,7 @@ export class TimerComponent implements OnInit, OnDestroy {
   }
 
   onSave(): void {
+    this.continueTimer = false;
     this.store.dispatch(saveTime({ lastTime: this.elapsedTime }));
   }
 }

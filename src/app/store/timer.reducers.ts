@@ -12,11 +12,11 @@ interface TimerState {
 }
 
 export const initialTimerState: TimerState = {
-  lastTime: 0,
-  savedAt: null
+  lastTime: 10,
+  savedAt: new Date().toISOString()
 };
 
 export const timerReducer = createReducer(
   initialTimerState,
-  on(saveTime, (state, { lastTime }) => ({ ...state, lastTime, savedOn: new Date().toISOString() })),
+  on(saveTime, (state, { lastTime }) => ({ ...state, lastTime, savedAt: new Date().toISOString() })),
 );
